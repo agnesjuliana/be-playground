@@ -23,10 +23,10 @@ export const mailVerifyContent = (
       process.env.NODE_ENV === 'production'
         ? MAIL_CONFIG.production.EMAIL_USER
         : MAIL_CONFIG.development.EMAIL_USER,
-    address: 'futurest-no-reply@mail.futurest.id',
+    address: 'test-no-reply@mail.test.id',
   },
   to: userEmail,
-  subject: 'Futurest Email Verification',
+  subject: 'Test Email Verification',
   html: `
   <html>
     <head>
@@ -67,21 +67,21 @@ export const mailVerifyContent = (
     <body>
       <div class="container">
         <h1>Halo, ${userName}</h1>
-        <p>Selamat bergabung menjadi Future Hero! Sebelum menjelajahi petualangan seru bersama Futurest 2024, lengkapi proses pembuatan akun kamu dengan langkah-langkah berikut:</p>
+        <p>Selamat bergabung menjadi Future Hero! Sebelum menjelajahi petualangan seru bersama ISE 2024, lengkapi proses pembuatan akun kamu dengan langkah-langkah berikut:</p>
         <br>
         <p>Klik tombol dibawah untuk verifikasi akun :</p>
-        <a class="btn" href="https://futurest.id/auth/email-verified?token=${mailToken}"
+        <a class="btn" href="BASE${mailToken}"
           >Verifikasi Email</a
         >
         <br>
         <p>Jika tombol tersebut tidak bekerja, kamu dapat verifikasi melalui link ini :</p>
-        <a href="https://futurest.id/auth/email-verified?token=${mailToken}">https://futurest.id/auth/email-verified?token=${mailToken}</a>
+        <a href="BASE${mailToken}">BASE${mailToken}</a>
         <br>
-        <p>Setelah verifikasi, proses pembuatan akun kamu telah selesai. Jika terdapat kendala silakan menghubungi futurest@gmail.com atau sosial media Futurest.</p>
+        <p>Setelah verifikasi, proses pembuatan akun kamu telah selesai. Jika terdapat kendala silakan menghubungi atau sosial media.</p>
         <br>
         <p>Salam,</p>
         <br>
-        <p>Futurest 2024</p>
+        <p>ISE 2024</p>
       </div>
     </body>
   </html>

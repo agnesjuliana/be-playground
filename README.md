@@ -1,11 +1,11 @@
-# Futurest Back-end
+# Playground ISE Back-end
 
 ## How To Run This Project
 
 1. Clone this project
 
 ```
-git clone https://github.com/futurest2024/backend-futurest2024.git
+git clone https://github.com/agnesjuliana/be-playground-ise24
 ```
 
 2. Copy `.env.sample` to `.env.development` to configure a custom environment

@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    container_name: database-futurest
+    container_name: database-ise
     image: postgres:latest
     restart: always
     environment:
@@ -15,7 +15,7 @@ services:
     volumes:
       - ./docker/volumes/:/var/lib/postgresql/data
   redis:
-    container_name: redis-futurest
+    container_name: redis-ise
     image: redis:latest
     restart: always
     environment:
