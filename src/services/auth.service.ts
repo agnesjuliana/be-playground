@@ -58,7 +58,7 @@ export const AuthService = {
     const user = await database.accounts.findUnique({
       where: {
         email: request.email,
-      }
+      },
     });
 
     if (!user) {
@@ -87,7 +87,7 @@ export const AuthService = {
       token,
       user_id: user.id,
       nama: user.name,
-      email: user.email
+      email: user.email,
     };
   },
 
@@ -103,7 +103,7 @@ export const AuthService = {
       const result = {
         user_id: selfAccount.id,
         nama: selfAccount.name,
-        email: selfAccount.email
+        email: selfAccount.email,
       };
 
       return result;
