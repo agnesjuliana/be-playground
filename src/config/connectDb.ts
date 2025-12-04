@@ -10,7 +10,13 @@ declare global {
 }
 
 if (!global._db) {
-  global._db = new PrismaClient();
+  global._db = new PrismaClient({
+    datasources: {
+      db: {
+        url: process.env.DATABASE_URL,
+      },
+    },
+  });
 }
 
 const db: PrismaClient = global._db;
