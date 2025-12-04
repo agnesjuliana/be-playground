@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable @typescript-eslint/no-misused-promises */
+
 /* eslint-disable import/no-default-export */
-import express, { Router } from 'express';
+import { type Router } from 'express';
+import express from 'express';
 
 import { AuthController } from '../controllers';
 import { validate, isAllowedRoles } from '../middleware';

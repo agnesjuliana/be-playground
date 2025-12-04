@@ -1,4 +1,5 @@
-import express, { Router } from 'express';
+import express, { type Router } from 'express';
+
 const router: Router = express.Router();
 
 import passport from '../strategy/jwt-strategy';
@@ -16,16 +17,8 @@ router.use('/upload-image', UploadImageRoutes);
 router.use('/image', SendImageRoutes);
 router.use('/file', SendFileRoutes);
 
-router.use(
-  '/upload-file',
-  passport.authenticate('jwt', { session: false }),
-  UploadFileRoutes,
-);
-router.use(
-  '/upload-image',
-  passport.authenticate('jwt', { session: false }),
-  UploadImageRoutes,
-);
+router.use('/upload-file', passport.authenticate('jwt', { session: false }), UploadFileRoutes);
+router.use('/upload-image', passport.authenticate('jwt', { session: false }), UploadImageRoutes);
 
 // eslint-disable-next-line import/no-default-export
 export default router;

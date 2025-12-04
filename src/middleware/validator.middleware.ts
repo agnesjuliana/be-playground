@@ -4,12 +4,10 @@ import type Joi from 'joi';
 import { CustomError } from './error.middleware';
 
 export const validate =
-  (schema: Joi.Schema) =>
-  (request: Request, response: Response, next: NextFunction) => {
-    const { error }: { error: Joi.ValidationError } = schema.validate(
-      request.body,
-      { abortEarly: false },
-    );
+  (schema: Joi.Schema) => (request: Request, response: Response, next: NextFunction) => {
+    const { error }: { error: Joi.ValidationError } = schema.validate(request.body, {
+      abortEarly: false,
+    });
     const isValid = error == null;
 
     if (isValid) {

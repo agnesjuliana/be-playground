@@ -18,17 +18,13 @@ export interface IRequestUser extends Request {
 }
 
 export const isAllowedRoles =
-  (allowedRoles: Role[]) =>
-  (request: IRequestUser, response: Response, next: NextFunction) => {
-    const role = request.user?.role as Role;
+  (allowedRoles: Role[]) => (request: IRequestUser, response: Response, next: NextFunction) => {
+    const role = request.user?.role;
 
     // Check if the user's role is in the allowed roles array
     if (!allowedRoles.includes(role)) {
       return next(
-        new CustomError(
-          StatusCodes.UNAUTHORIZED,
-          'You are not authorized to access this route',
-        ),
+        new CustomError(StatusCodes.UNAUTHORIZED, 'You are not authorized to access this route'),
       );
     }
 

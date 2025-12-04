@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/filename-case */
 /* eslint-disable import/no-default-export */
-/* eslint-disable no-var */
+
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable unicorn/prevent-abbreviations */
 import { PrismaClient } from '@prisma/client';
@@ -9,16 +9,10 @@ declare global {
   var _db: PrismaClient | undefined;
 }
 
-if (!global._db) {
-  global._db = new PrismaClient({
-    datasources: {
-      db: {
-        url: process.env.DATABASE_URL,
-      },
-    },
-  });
+if (!globalThis._db) {
+  globalThis._db = new PrismaClient();
 }
 
-const db: PrismaClient = global._db;
+const db: PrismaClient = globalThis._db;
 
 export default db;

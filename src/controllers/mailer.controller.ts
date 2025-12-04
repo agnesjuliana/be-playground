@@ -6,11 +6,7 @@ import { MailService } from '../services';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const MailerController = {
-  async verificationMail(
-    request: Request,
-    response: Response,
-    next: NextFunction,
-  ) {
+  async verificationMail(request: Request, response: Response, next: NextFunction) {
     try {
       await MailService.sendVerificationMail(request.body.email);
       const result = new CustomResponse(StatusCodes.OK, 'Email sended');
@@ -21,11 +17,7 @@ export const MailerController = {
     }
   },
 
-  async resendVerificationEmail(
-    request: Request,
-    response: Response,
-    next: NextFunction,
-  ) {
+  async resendVerificationEmail(request: Request, response: Response, next: NextFunction) {
     try {
       await MailService.resendVerifyEmail(request.body.email);
       const result = new CustomResponse(StatusCodes.OK, 'Email sended');

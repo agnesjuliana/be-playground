@@ -20,14 +20,8 @@ export const AuthController = {
 
   async register(request: Request, response: Response, next: NextFunction) {
     try {
-      const account = await AuthService.register(
-        request.body as RegisterRequest,
-      );
-      const result = new CustomResponse(
-        StatusCodes.CREATED,
-        'Register success',
-        account,
-      );
+      const account = await AuthService.register(request.body as RegisterRequest);
+      const result = new CustomResponse(StatusCodes.CREATED, 'Register success', account);
 
       return response.status(StatusCodes.CREATED).json(result.toJSON());
     } catch (error: any) {
@@ -51,11 +45,7 @@ export const AuthController = {
 
       const userData = await AuthService.selfData(token[1]);
 
-      const result = new CustomResponse(
-        StatusCodes.OK,
-        'Success get Me',
-        userData,
-      );
+      const result = new CustomResponse(StatusCodes.OK, 'Success get Me', userData);
 
       return response.status(StatusCodes.OK).json(result.toJSON());
     } catch (error: any) {

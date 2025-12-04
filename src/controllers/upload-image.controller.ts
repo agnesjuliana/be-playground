@@ -14,10 +14,7 @@ export const UploadImageController = async (
     const file = request.file;
 
     if (!file) {
-      const error = new CustomError(
-        StatusCodes.BAD_REQUEST,
-        'No file uploaded',
-      );
+      const error = new CustomError(StatusCodes.BAD_REQUEST, 'No file uploaded');
 
       return response.json(error);
     }

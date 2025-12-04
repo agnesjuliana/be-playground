@@ -4,7 +4,7 @@ import { CustomError } from '../middleware';
 import { Mailer } from '../repositories';
 import { generateMailVerifyToken, tokenDecode } from '../utils/JwtToken';
 import { mailVerifyContent } from '../utils/MailerComponent';
-import { mailQueue } from '../utils/MailProcess';
+import { MailQueue } from '../utils/MailProcess';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const MailService = {
@@ -17,16 +17,13 @@ export const MailService = {
       }
 
       if (user.is_email_verified) {
-        throw new CustomError(
-          StatusCodes.BAD_REQUEST,
-          'Email is already verified',
-        );
+        throw new CustomError(StatusCodes.BAD_REQUEST, 'Email is already verified');
       }
 
       const mailToken = generateMailVerifyToken(user.email, user.id);
       const mailOptions = mailVerifyContent(user.email, user.name, mailToken);
 
-      const sendMail = new mailQueue();
+      const sendMail = new MailQueue();
       await sendMail.send(mailOptions);
     } catch (error) {
       throw error;
@@ -42,16 +39,13 @@ export const MailService = {
       }
 
       if (user.is_email_verified) {
-        throw new CustomError(
-          StatusCodes.BAD_REQUEST,
-          'Email is already verified',
-        );
+        throw new CustomError(StatusCodes.BAD_REQUEST, 'Email is already verified');
       }
 
       const mailToken = generateMailVerifyToken(user.email, user.id);
       const mailOptions = mailVerifyContent(user.email, user.name, mailToken);
 
-      const sendMail = new mailQueue();
+      const sendMail = new MailQueue();
       await sendMail.send(mailOptions);
     } catch (error) {
       throw error;
@@ -73,10 +67,7 @@ export const MailService = {
       }
 
       if (user.is_email_verified) {
-        throw new CustomError(
-          StatusCodes.BAD_REQUEST,
-          'Email is already verified',
-        );
+        throw new CustomError(StatusCodes.BAD_REQUEST, 'Email is already verified');
       }
 
       await Mailer.verifyEmail(user.id);

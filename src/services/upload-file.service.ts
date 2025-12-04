@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
+
 import { type Request, type Response } from 'express';
 
 import { filePath } from '../middleware/upload-file.middleware';

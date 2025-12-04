@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
 
@@ -6,13 +5,9 @@ import database from '../config/connectDb';
 import { CustomError } from '../middleware';
 import { type LoginRequest, type RegisterRequest } from '../models';
 import { Accounts } from '../repositories';
-import {
-  generateAccessToken,
-  generateMailVerifyToken,
-  tokenDecode,
-} from '../utils/JwtToken';
+import { generateAccessToken, generateMailVerifyToken, tokenDecode } from '../utils/JwtToken';
 import { mailVerifyContent } from '../utils/MailerComponent';
-import { mailQueue } from '../utils/MailProcess';
+import { MailQueue } from '../utils/MailProcess';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AuthService = {
@@ -27,11 +22,7 @@ export const AuthService = {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword: string = await bcrypt.hash(request.password, salt);
 
-      const account = await Accounts.createAccount(
-        request.email,
-        hashedPassword,
-        request.name,
-      );
+      const account = await Accounts.createAccount(request.email, hashedPassword, request.name);
 
       delete account.password;
       delete account.is_email_verified;
@@ -39,13 +30,9 @@ export const AuthService = {
       delete account.updated_at;
 
       const mailToken = generateMailVerifyToken(account.email, account.id);
-      const mailOptions = mailVerifyContent(
-        account.email,
-        account.name,
-        mailToken,
-      );
+      const mailOptions = mailVerifyContent(account.email, account.name, mailToken);
 
-      const sendMail = new mailQueue();
+      const sendMail = new MailQueue();
       await sendMail.send(mailOptions);
 
       return account;

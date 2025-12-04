@@ -14,7 +14,7 @@ async function users() {
       password: bcryptjs.hashSync(user.password, salt),
       role: user.role,
       name: user.name,
-      is_email_verified: user.is_email_verified == 'true' ? true : false
+      is_email_verified: user.is_email_verified == 'true' ? true : false,
     };
   });
 
@@ -49,7 +49,7 @@ async function users() {
           is_email_verified: user.is_email_verified,
           password: user.password,
           role: user.role,
-          name: user.name
+          name: user.name,
         },
         create: {
           email: user.email,

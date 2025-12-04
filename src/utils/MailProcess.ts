@@ -7,7 +7,7 @@ import Bull, { type Queue, type Job } from 'bull';
 
 import { mailgunCred } from './MailerComponent';
 
-export class mailQueue {
+export class MailQueue {
   private mailList: Queue;
 
   constructor() {
@@ -15,9 +15,7 @@ export class mailQueue {
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.mailList.process('sendmail', async (job: Job) => {
-      const mailgunner = nodemailer.createTransport(
-        mailgunTransport(mailgunCred),
-      );
+      const mailgunner = nodemailer.createTransport(mailgunTransport(mailgunCred));
 
       await mailgunner.sendMail(job.data);
     });

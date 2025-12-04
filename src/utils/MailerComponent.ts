@@ -13,11 +13,7 @@ export const mailgunCred = {
   },
 };
 
-export const mailVerifyContent = (
-  userEmail: string,
-  userName: string,
-  mailToken: string,
-) => ({
+export const mailVerifyContent = (userEmail: string, userName: string, mailToken: string) => ({
   from: {
     name:
       process.env.NODE_ENV === 'production'

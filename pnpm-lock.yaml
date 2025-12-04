@@ -66,6 +66,9 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1
     devDependencies:
+      '@eslint/js':
+        specifier: ^9.39.1
+        version: 9.39.1
       '@prisma/client':
         specifier: '7'
         version: 7.1.0(prisma@7.1.0(@types/react@19.2.7)(typescript@5.9.3))(typescript@5.9.3)
