@@ -1,5 +1,5 @@
 {
-  "name": "be-playground-ise24",
+  "name": "be-playground",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -61,8 +61,6 @@
     "eslint-plugin-import-helpers": "^2.0.1",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-unicorn": "^62.0.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
     "nodemon": "^3.1.11",
     "prettier": "3.7.4",
     "prisma": "7",
@@ -89,12 +87,5 @@
     "nodemailer-mailgun-transport": "^2.1.5",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "src/**/*.ts": [
-      "pnpm format",
-      "pnpm lint"
-    ]
   }
 }
