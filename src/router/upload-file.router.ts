@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { Router } from 'express';
 
 import { UploadFileController } from '../controllers/upload-file.controller';
 import { uploadFileMiddleware } from '../middleware/upload-file.middleware';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 router.post('', uploadFileMiddleware.single('file'), UploadFileController);

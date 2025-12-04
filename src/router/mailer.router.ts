@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable import/no-default-export */
-import express from 'express';
+import express, { Router } from 'express';
 
 import { MailerController } from '../controllers';
 import { validate } from '../middleware';
 import { emailVerify } from '../validators';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post(
   '/verify-email',

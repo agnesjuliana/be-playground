@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { Router } from 'express';
 
 import { UploadImageController } from '../controllers/upload-image.controller';
 import { uploadImageMiddleware } from '../middleware/upload-image.middleware';
 
-const router = express.Router();
+const router: Router = express.Router();
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 router.post('', uploadImageMiddleware.single('file'), UploadImageController);
