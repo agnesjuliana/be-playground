@@ -11,11 +11,18 @@ export class MailQueue {
   private mailList: Queue;
 
   constructor() {
-    this.mailList = new Bull('sendmail', process.env.CACHE_URL);
+    this.mailList = new Bull('sendmail', {
+      redis: {
+        host: process.env.CACHE_HOST || 'localhost',
+        port: Number(process.env.CACHE_PORT) || 6379,
+      },
+    });
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.mailList.process('sendmail', async (job: Job) => {
-      const mailgunner = nodemailer.createTransport(mailgunTransport(mailgunCred));
+      const mailgunner = nodemailer.createTransport(
+        mailgunTransport(mailgunCred),
+      );
 
       await mailgunner.sendMail(job.data);
     });
